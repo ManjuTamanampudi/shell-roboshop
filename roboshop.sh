@@ -27,9 +27,9 @@ IP_ADDRESSES=$(
 )
 echo "exicuting"
 if [ $INSTANCE = "frontend" ]; then
-echo -e "Public ip : $G $IP_ADDRESSES.Reservations[*].Instances[*].[PublicIpAddress] "
+echo -e "Public ip :  $IP_ADDRESSES.Reservations[*].Instances[*].[PublicIpAddress] "
 else
-echo -e "Public ip : $G $IP_ADDRESSES.Reservations[*].Instances[*].[PrivateIpAddress] "
+echo -e "Public ip :  $IP_ADDRESSES.Reservations[*].Instances[*].[PrivateIpAddress] "
 fi
 done
 
