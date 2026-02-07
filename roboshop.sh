@@ -11,7 +11,7 @@ for INSTANCE in $@
 do
 INSTANCE_ID=$(aws ec2 run-instances \
     --image-id $AMI_ID \
-    --count 2 \
+    --count 1 \
     --instance-type t3.micro \
     --security-group-ids $SG_ID \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value='$INSTANCE'}]" \
@@ -25,7 +25,7 @@ IP_ADDRESSES=$(
     --query "Reservations[*].Instances[*].[PrivateIpAddress, PublicIpAddress]" \
     --output text
 )
-echo "exicuting"
+echo "IP_ADDRESSES :  $IP_ADDRESSES "
 if [ $INSTANCE = "frontend" ]; then
 echo -e "Public ip :  $IP_ADDRESSES.Reservations[*].Instances[*].[PublicIpAddress] "
 else
