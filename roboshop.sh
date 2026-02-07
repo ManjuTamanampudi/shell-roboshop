@@ -21,7 +21,7 @@ INSTANCE_ID=$(aws ec2 run-instances \
 
 IP_ADDRESSES=$(
     aws ec2 describe-instances \
-    --instance-ids i-0123456789abcdef0 \
+    --instance-ids $INSTANCE_ID \
     --query "Reservations[*].Instances[*].[PrivateIpAddress, PublicIpAddress]" \
     --output text
 )
@@ -30,6 +30,6 @@ if [ $INSTANCE = "frontend" ]; then
 echo -e "Public ip :  $IP_ADDRESSES.Reservations[*].Instances[*].[PublicIpAddress] "
 else
 echo -e "Public ip :  $IP_ADDRESSES.Reservations[*].Instances[*].[PrivateIpAddress] "
-fi
+fi 
 done
 
