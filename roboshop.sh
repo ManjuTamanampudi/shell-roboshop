@@ -6,6 +6,7 @@ R='\-e[31m'
 G='\-e[32m'
 Y='\-e[33m'
 N='\-e[0m'
+echo "exicuting"
 for INSTANCE in $@
 do
 INSTANCE_ID=$(aws ec2 run-instances \
@@ -24,6 +25,7 @@ IP_ADDRESSES=$(
     --query "Reservations[*].Instances[*].[PrivateIpAddress, PublicIpAddress]" \
     --output text
 )
+echo "exicuting"
 if [ $INSTANCE = "frontend" ]; then
 echo -e "Public ip : $G $IP_ADDRESSES.Reservations[*].Instances[*].[PublicIpAddress] "
 else
