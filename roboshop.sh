@@ -25,11 +25,12 @@ IP_ADDRESSES=$(
     --query "Reservations[*].Instances[*].[PrivateIpAddress, PublicIpAddress]" \
     --output text
 )
+read -a IP_ARRAY <<< "$IP_ADDRESSES"
 echo "IP_ADDRESSES :  $IP_ADDRESSES "
 if [ $INSTANCE = "frontend" ]; then
-echo -e "Public ip :  $IP_ADDRESSES[0] "
+echo -e "Public ip :  '${IP_ARRAY[1]}' "
 else
-echo -e "Private ip :  $IP_ADDRESSES[1] "
+echo -e "Private ip :  '${IP_ARRAY[0]} ' "
 fi 
 done
 
